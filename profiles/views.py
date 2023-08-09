@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Profile
 from .serializers import ProfileSerializer
+from drf_api.permissions import IsOwnerOrReadOnly
 
 
 class ProfileList(APIView):
@@ -17,12 +18,15 @@ class ProfileList(APIView):
 
 class ProfileDetail(APIView):
     serializer_class = ProfileSerializer
+    permission_classes = [IsOwnerOrReadOnly]
     # self and primary key as arguments.
-    
+
     def get_object(self, pk):
         try:
             # Get profile by primary key
             profile = Profile.objects.get(pk=pk)
+            # throw error 
+            self.check_object_permissions(self.request, profile)
             return profile
         except Profile.DoesNotExist:
             # import at the top

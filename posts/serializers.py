@@ -8,7 +8,7 @@ class PostSerializer(serializers.ModelSerializer):
     post_image = serializers.ReadOnlyField(source='owner.post.image.url')
 # read only and read is_owner function with get.
     is_owner = serializers.SerializerMethodField()
-# implement validation checks from rest_framework validate_fieldname. 
+# implement validation checks from rest_framework validate_fieldname.
 # Automatic.
 # value = loaded image
 
@@ -22,11 +22,11 @@ class PostSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 'Image is too wide. Over 4096px'
             )
-        if value.image.height >4096:
+        if value.image.height > 4096:
             raise serializers.ValidationError(
                 'Image is too high. Over 4096px'
             )
-        return value    
+        return value
 
     def get_is_owner(self, obj):
         request = self.context['request']

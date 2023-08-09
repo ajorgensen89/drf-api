@@ -5,13 +5,14 @@ from rest_framework.views import APIView
 from .models import Post
 from .serializers import PostSerializer
 from django.http import Http404
+from drf_api.permissions import IsOwnerOrReadOnly
 
 
 class PostList(APIView):
     # Better forms.
     serializer_class = PostSerializer
     # import of permissions to check if user if logged in. IN A LIST.
-    # NO FORM if not logged in.
+    # NO FORM if not logged in. Need from import.
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly
     ]
@@ -41,7 +42,7 @@ class PostList(APIView):
 
 
 class PostDetail(APIView):
-    # permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [IsOwnerOrReadOnly]
     serializer_class = PostSerializer
 
     # get posts
@@ -52,6 +53,7 @@ class PostDetail(APIView):
             self.check_object_permissions(self.request, post)
             return post
         except Post.DoesNotExist:
+            # Need from import
             raise Http404
 
     def get(self, request, pk):

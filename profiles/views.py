@@ -26,7 +26,7 @@ class ProfileDetail(APIView):
         try:
             # Get profile by primary key
             profile = Profile.objects.get(pk=pk)
-            # throw error 
+            # throw error
             self.check_object_permissions(self.request, profile)
             return profile
         except Profile.DoesNotExist:
@@ -49,5 +49,3 @@ class ProfileDetail(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-

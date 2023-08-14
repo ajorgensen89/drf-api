@@ -39,7 +39,7 @@ SECRET_KEY = (
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-ajorgensen89-drfapi-p5my9120oab.ws-eu103.gitpod.io']
+ALLOWED_HOSTS = ['8000-ajorgensen89-drfapi-ahr9c526c0i.ws-eu103.gitpod.io']
 
 
 # Application definition
@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'likes',
     'followers',
     'rest_framework',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

@@ -70,8 +70,9 @@ DEBUG = True
 # DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
-    'localhost', 'drf-api-aj.herokuapp.com', 
+    'localhost', 'drf-api-aj.herokuapp.com',
     '8000-ajorgensen89-drfapi-jbizq1ocohk.ws-eu103.gitpod.io',
+    'drf-api-aj-f1a2d8abfd1f.herokuapp.com',
     ]
 
 
